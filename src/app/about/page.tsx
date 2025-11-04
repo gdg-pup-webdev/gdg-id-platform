@@ -31,7 +31,7 @@ const AboutPage = () => {
         className="hidden lg:flex absolute left-[100px] top-[50vh] -translate-y-1/2 
         w-[105px] h-[105px] items-center justify-center rounded-full bg-white/90 
           backdrop-blur-sm 
-         shadow-[0_0_20px_5px_rgba(255,255,255,0.6)] border-4 border-white/60  rotate-20 -z-10"
+         shadow-[0_0_20px_5px_rgba(255,255,255,0.6)] border-4 border-white/60  rotate-20 z-0"
       >
         <img
           src="/sites/about/stickerBrackets.gif"
@@ -44,7 +44,7 @@ const AboutPage = () => {
         className="hidden lg:flex absolute right-[100px] top-[60px]
         w-[105px] h-[105px] items-center justify-center rounded-full bg-white/90 
        shadow-[0_0_20px_5px_rgba(255,255,255,0.6)] border-4 border-white/60 backdrop-blur-sm 
-          -rotate-12 -z-10"
+          -rotate-12 z-10"
       >
         <img
           src="/sites/about/stickerBrackets.gif"

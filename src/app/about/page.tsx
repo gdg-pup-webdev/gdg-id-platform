@@ -362,7 +362,7 @@ const CONTRIBUTORS: TeamType[] = [
   },
   {
     group: "Executive Technology Team",
-    textColor: "green",
+    textColor: "blue",
     members: [
       {
         name: "Carlos Jerico Dela Torre",

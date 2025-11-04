@@ -76,8 +76,8 @@ export default function Navbar() {
                     className={cn(
                       "text-base font-normal transition-all duration-200",
                       pathname === link.href
-                        ? "text-gdg-blue [filter:drop-shadow(0_0_6px_rgba(174,205,253,1))] font-bold"
-                        : "text-text hover:text-gdg-blue hover:[filter:drop-shadow(0_0_6px_rgba(174,205,253,1))]"
+                        ? "text-gdg-blue dark:text-gdg-green [filter:drop-shadow(0_0_6px_rgba(174,205,253,1))] font-bold"
+                        : "text-text hover:text-gdg-blue dark:hover:text-gdg-green hover:[filter:drop-shadow(0_0_6px_rgba(174,205,253,1))]"
                     )}
                   >
                     {link.name}

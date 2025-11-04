@@ -356,7 +356,7 @@ const CONTRIBUTORS: TeamType[] = [
         role: "Full Stack Developer",
         fb: "https://www.facebook.com/share/1Ee1wU4gyA/",
         ig: "https://www.instagram.com/d.simara_?igsh=dzAyems5YXg5Z2Zk",
-        linkedin: "www.linkedin.com/in/daniella-simara-908b8229a",
+        linkedin: "https://www.linkedin.com/in/daniella-simara-908b8229a",
       },
     ],
   },

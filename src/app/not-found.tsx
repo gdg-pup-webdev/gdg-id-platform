@@ -21,7 +21,7 @@ export default function ComingSoonPage () {
             </div>
 
             {/* glow blobs layer — hidden on mobile */}
-            <div className="hidden sm:block absolute inset-0 z-10">
+            <div className="hidden sm:block absolute inset-0 -z-0">
                 <GlowBlobs
                     layout="custom"
                     blobs={[

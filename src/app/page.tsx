@@ -51,7 +51,7 @@ export default function Home() {
         {/* content container */}
         <div className=" relative flex flex-col my-4 px-4 max-w-7xl mx-auto w-full ">
           {/* heading  */}
-          <div className="w-full font-bold flex justify-center lg:mb-5 min-h-[60px] max-w-[400px] sm:max-w-[400px] sm:min-h-[80px] md:max-w-[600px] lg:max-w-[900px] md:min-h-[120px] lg:min-h-[140px] mx-auto lg:mt-20">
+          <div className="w-full font-bold flex justify-center lg:mb-5 min-h-[60px] max-w-[400px] sm:max-w-[400px] sm:min-h-[80px] md:max-w-[600px] lg:max-w-[900px] md:min-h-[120px] lg:min-h-[142px] mx-auto lg:mt-20">
             <TypeAnimation
               sequence={[
                 "B",

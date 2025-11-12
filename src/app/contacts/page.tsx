@@ -376,12 +376,7 @@ const DETAILS: {
     image: "/sites/contacts/pin.svg",
     title: "Address",
     description: "PUP A. Mabini Campus, Anonas St., Sta. Mesa, Manila",
-  },
-  {
-    image: "/sites/contacts/call.svg",
-    title: "Contact",
-    description: "+63 123456789",
-  },
+  }, 
   {
     image: "/sites/contacts/mail.svg",
     title: "Email",

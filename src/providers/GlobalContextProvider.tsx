@@ -31,7 +31,10 @@ export const GlobalContextProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("darkMode") === "true" || false);
+  // const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("darkMode") === "true" || false);
+
+  
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const setDarkmodeFunc : Dispatch<SetStateAction<boolean>> = (value) => {
     setIsDarkMode(value);

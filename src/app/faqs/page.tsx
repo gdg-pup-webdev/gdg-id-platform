@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { useGlobalContext } from "@/providers/GlobalContextProvider";
 import GlowBlobs from "@/components/GlowBlobs";
 import { FaMinus } from "react-icons/fa";
+import Image from "next/image";
 
 const FAQsPage = () => {
   return (
@@ -24,6 +25,8 @@ const FAQsPage = () => {
             src="/sites/faqs/SittingSparky.png"
             alt="sparky "
             className="w-[30%] xs:w-[20%] md:w-[30%] lg:w-[40%] group-hover:rotate-3 transition-all duration-200 max-w-50 aspect-auto "
+            width={0}
+            height={0}
           />
           <div className="flex flex-col gap-2">
             <h1

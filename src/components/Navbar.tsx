@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { IoMenu, IoClose } from "react-icons/io5";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useGlobalContext } from "@/providers/GlobalContextProvider"; 
+import Image from "next/image";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -52,17 +53,21 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
             >
               {/* Mobile logo (same for both modes) */}
-              <img
+              <Image
                 src={mobileLogo}
                 alt="GDG Mobile Logo"
                 className="block md:hidden w-auto h-8"
+                width={0}
+                height={0}
               />
 
               {/* Desktop logo (switches by theme) */}
-              <img
+              <Image
                 src={desktopLogo}
                 alt="GDG Logo"
                 className="hidden md:block w-auto h-10 transition-opacity duration-300"
+                width={0}
+                height={0}
               />
             </Link>
 

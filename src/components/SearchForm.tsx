@@ -8,6 +8,7 @@ import Button from "./Button";
 import { cn } from "@/lib/utils";
 import { getMember } from "@/lib/client/apiEndpoints/memberEndpoints";
 import { error } from "console";
+import { Member } from "@/types/member";
 
 interface SearchFormProps {
   className?: string;
@@ -26,7 +27,7 @@ export default function SearchForm({ className }: SearchFormProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [userResult, setUserResult] = useState<UserResult | null>(null);
+  const [userResult, setUserResult] = useState<Member | null>(null);
   const [loading, setLoading] = useState(false);
   const [inputWidth, setInputWidth] = useState(0);
 
@@ -147,7 +148,7 @@ export default function SearchForm({ className }: SearchFormProps) {
 
                 {!loading && !errorMessage && userResult && (
                   <div className="text-zinc-800 text-xs sm:text-sm md:text-md lg:text-lg font-bold leading-normal">
-                    {userResult.name}
+                    {userResult.displayName}
                   </div>
                 )}
 

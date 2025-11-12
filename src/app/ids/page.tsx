@@ -30,6 +30,8 @@ const IDPage = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { member, isLoading, isError, error } = useMemberQuery(email);
 
+  console.log("member", member);
+
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
   // Fetch member data
@@ -97,26 +99,77 @@ const IDPage = () => {
         const labelSpacing = 30;
         let currentY = 575;
 
-        context.fillText(`Name:`, labelX, currentY);
-        currentY += labelSpacing;
-        context.fillText(`Email:`, labelX, currentY);
-        currentY += labelSpacing;
-        context.fillText(`Course:`, labelX, currentY);
-        currentY += labelSpacing;
-        context.fillText(`Department:`, labelX, currentY);
+        if (member.firstName || member.middleName || member.lastName) {
+          context.fillText(`Name:`, labelX, currentY);
+          currentY += labelSpacing;
+        }
+
+        if (member.email) {
+          context.fillText(`Email:`, labelX, currentY);
+          currentY += labelSpacing;
+        }
+
+        if (member.program) {
+          context.fillText(`Program:`, labelX, currentY);
+          currentY += labelSpacing;
+        }
+
+        if (member.department) {
+          context.fillText(`Department:`, labelX, currentY);
+        }
 
         // Right column: Values
         context.font = "bold 16px Arial";
         const valueX = 180; // Increased gap for better alignment
         currentY = 575;
 
-        context.fillText(`${member.name || ""}`, valueX, currentY);
-        currentY += labelSpacing;
-        context.fillText(`${member.email || ""}`, valueX, currentY);
-        currentY += labelSpacing;
-        context.fillText(`${member.course || ""}`, valueX, currentY);
-        currentY += labelSpacing;
-        context.fillText(`Technology - Web Development`, valueX, currentY);
+        const fullName = `${member.firstName || ""}${
+          member.middleName ? ` ${member.middleName}` : ""
+        }${member.lastName ? ` ${member.lastName}` : ""}`;
+
+        if (member.firstName || member.middleName || member.lastName) {
+          if (fullName.length > 32) {
+            context.font = `bold ${(16 * 32) / fullName.length}px Arial`;
+          }
+
+          context.fillText(`${fullName}`, valueX, currentY);
+
+          context.font = "bold 16px Arial";
+          currentY += labelSpacing;
+        }
+
+        // up to 32 chars in width
+        if (member.email) {
+          if (member.email.length > 32) {
+            context.font = `bold ${(16 * 32) / member.email.length}px Arial`;
+          }
+
+          context.fillText(`${member.email || ""}`, valueX, currentY);
+
+          context.font = "bold 16px Arial";
+          currentY += labelSpacing;
+        }
+
+        if (member.program) {
+          if (member.program.length > 32) {
+            context.font = `bold ${(16 * 32) / member.program.length}px Arial`;
+          }
+
+          context.fillText(`${member.program || ""}`, valueX, currentY);
+
+          context.font = "bold 16px Arial";
+          currentY += labelSpacing;
+        }
+
+        if (member.department) {
+          if (member.department.length > 32) {
+            context.font = `bold ${
+              (16 * 32) / member.department.length
+            }px Arial`;
+          }
+
+          context.fillText(`${member.department || ""}`, valueX, currentY);
+        }
       };
 
       // Render high-res canvas for downloads (hidden, 4x resolution)

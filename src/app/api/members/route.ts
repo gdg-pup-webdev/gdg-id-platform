@@ -7,6 +7,7 @@ const rateLimiter = new RateLimiterMemory({
   points: 4, // 5 requests
   duration: 6, // per 6 seconds by IP
 });
+
 export async function GET(req: NextRequest) {
   // RATE LIMITER
   const limitResult = await consumeLimiter(rateLimiter, req);
@@ -30,13 +31,25 @@ export async function GET(req: NextRequest) {
     const rows = json.table.rows;
 
     // Extract data into array of objects
-    const users = rows.map((r: { c: { v: string }[] }) => ({
-      displayName: r.c[0]?.v || "",
-      gdgId: r.c[1]?.v || "",
-      name: r.c[2]?.v || "",
-      email: r.c[3]?.v || "",
-      course: r.c[4]?.v || "",
-    }));
+
+   const users = rows.map((r: { c: { v: string }[] }) => ({
+  gdgId: r.c[0]?.v?.trim() || "",
+  email: r.c[1]?.v?.trim() || "",
+  program: r.c[2]?.v?.trim() || "",
+  department: r.c[3]?.v?.trim() || "",
+  displayName: r.c[4]?.v?.trim() || "",
+  firstName: r.c[5]?.v?.trim() || "",
+  lastName: r.c[6]?.v?.trim() || "",
+  middleName: r.c[7]?.v?.trim() || "",
+}));
+
+    // const users = rows.map((r: { c: {  v: string }[] }) => ({
+    //   displayName: r.c[0]?.v || "",
+    //   gdgId: r.c[1]?.v || "",
+    //   name: r.c[2]?.v || "",
+    //   email: r.c[3]?.v || "",
+    //   course: r.c[4]?.v || "",
+    // }));
 
     const user = users.find(
       (u: { email: string }) => u.email.toLowerCase() === email.toLowerCase()

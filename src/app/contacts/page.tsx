@@ -30,12 +30,10 @@ const ContactsPage = () => {
       {/* content container */}
       <div className="w-full flex flex-col px-4 max-w-7xl mx-auto z-10 relative">
         {/* border image at the top */}
-        <Image
+        <img
           src="/sites/contacts/border.png"
           alt="sparky "
-          className="w-full my-8 hidden xl:flex"
-          width={0}
-          height={0}
+          className="w-full my-8 hidden xl:flex" 
         />
 
         {/* heading part */}

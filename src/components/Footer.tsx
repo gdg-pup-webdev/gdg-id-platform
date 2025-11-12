@@ -2,6 +2,7 @@
 
 import Button from "@/components/Button";
 import { useGlobalContext } from "@/providers/GlobalContextProvider";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -22,11 +23,14 @@ const Footer = () => {
         `,
       }}
     >
-      <div className="w-full max-w-7xl mx-auto overflow-x-hidden px-0">
-        <img
+      <div className="w-full max-w-7xl mx-auto overflow-x-hidden px-0 relative">
+        <Image
           src="/sites/contacts/border.png"
           alt="Footer border"
+          width={1920}
+          height={100}
           className="w-full h-auto object-contain block"
+          priority
         />
       </div>
 
@@ -41,18 +45,22 @@ const Footer = () => {
           text-center lg:text-left
         "
       >
+        {/* logo */}
         <div
           className="flex items-center justify-center lg:justify-start w-full lg:w-auto cursor-pointer"
           onClick={() => router.push("/")}
         >
-          <img
+          <Image
             src={
               isDarkMode
                 ? "/sites/footer/gdgnewnewlogo.png"
                 : "/sites/footer/gdgnewlogo.png"
             }
             alt="GDG Footer Logo"
+            width={150}
+            height={40}
             className="h-6 w-auto object-contain"
+            priority
           />
         </div>
 
@@ -136,10 +144,12 @@ const Footer = () => {
               aria-label="LinkedIn"
               key={index}
             >
-              <img
+              <Image
                 src={social.image}
                 alt="LinkedIn"
                 className="h-5 w-5 object-contain hover:opacity-80 transition"
+                width={0}
+                height={0}
               />
             </a>
           ))}

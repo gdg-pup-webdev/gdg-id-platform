@@ -1,7 +1,10 @@
 export type Member = {
-    displayName: string; 
-    gdgId: string;
-    name: string;
-    email: string;
-    course: string;
+  gdgId: string;
+  email: string;
+  program: string;
+  department: string;
+  displayName: string;
+  firstName: string;
+  lastName: string;
+  middleName: string;
 };

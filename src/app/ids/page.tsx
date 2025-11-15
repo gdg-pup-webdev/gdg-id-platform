@@ -42,7 +42,7 @@ const calculateFont = (
   ctx.font = `${fontWeight} ${fontSize}px Arial`;
 
   // Measure the actual rendered width
-  let textWidth = ctx.measureText(text).width;
+  const textWidth = ctx.measureText(text).width;
 
   // Scale down if text is too wide
   if (textWidth > maxWidthPixels) {

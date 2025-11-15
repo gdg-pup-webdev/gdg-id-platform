@@ -24,6 +24,34 @@ export default function TrueIdPageWithSuspenseBoundary() {
   );
 }
 
+const calculateFont = (
+  text: string,
+  maxWidthPixels: number,
+  normalFontSize: number,
+  bold: boolean = true
+): string => {
+  // Create a canvas context for measuring text
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  const fontWeight = bold ? "bold" : "normal";
+  
+  if (!ctx) return `${fontWeight} ${normalFontSize}px Arial`;
+
+  let fontSize = normalFontSize;
+  ctx.font = `${fontWeight} ${fontSize}px Arial`;
+
+  // Measure the actual rendered width
+  const textWidth = ctx.measureText(text).width;
+
+  // Scale down if text is too wide
+  if (textWidth > maxWidthPixels) {
+    fontSize = (maxWidthPixels / textWidth) * fontSize;
+  }
+
+  return `${fontWeight} ${fontSize}px Arial`;
+};
+
 const IDPage = () => {
   const searchParams = useSearchParams();
   const [email, setEmail] = useState<string | undefined>(undefined);
@@ -82,11 +110,13 @@ const IDPage = () => {
         context.fillStyle = "#1a1a1a";
 
         // Display name
-        context.font = "bold 32px Arial";
-        context.fillText(member.displayName || "", width / 2, 465);
+        const displayName =  member.displayName || "";
+        context.font = calculateFont(displayName || "", 180, 32);
+        context.fillText(displayName || "", width / 2, 465);
 
         // GDG ID
-        context.font = "20px Arial";
+        const gdgid = member.gdgId || "";
+        context.font = calculateFont(displayName || "", 180, 20, false);
         context.fillText(member.gdgId || "", width / 2, 495);
 
         // Bottom section - Two column layout for better alignment
@@ -98,6 +128,8 @@ const IDPage = () => {
         const labelX = 70;
         const labelSpacing = 30;
         let currentY = 575;
+
+        const maxTextWidth = width - 180 - 70;
 
         if (member.firstName || member.middleName || member.lastName) {
           context.fillText(`Name:`, labelX, currentY);
@@ -129,7 +161,7 @@ const IDPage = () => {
 
         if (member.firstName || member.middleName || member.lastName) {
           if (fullName.length > 32) {
-            context.font = `bold ${(16 * 32) / fullName.length}px Arial`;
+            context.font = calculateFont(fullName, maxTextWidth, 16);
           }
 
           context.fillText(`${fullName}`, valueX, currentY);
@@ -140,22 +172,29 @@ const IDPage = () => {
 
         // up to 32 chars in width
         if (member.email) {
-          if (member.email.length > 32) {
-            context.font = `bold ${(16 * 32) / member.email.length}px Arial`;
+          const email = member.email;
+          console.log("email", email, "email length", email.length);
+          if (email.length > 32) {
+            const font = calculateFont(email, maxTextWidth, 16);
+            context.font = font;
+            console.log("font", font);
           }
 
-          context.fillText(`${member.email || ""}`, valueX, currentY);
+          context.fillText(`${email || ""}`, valueX, currentY);
 
           context.font = "bold 16px Arial";
           currentY += labelSpacing;
         }
 
         if (member.program) {
-          if (member.program.length > 32) {
-            context.font = `bold ${(16 * 32) / member.program.length}px Arial`;
+          const program = `${member.program} `;
+          console.log("program", program, "program length", program.length);
+          if (program.length > 32) {
+            context.font = calculateFont(program, maxTextWidth, 16);
+            console.log("font", calculateFont(program, 32, 16));
           }
 
-          context.fillText(`${member.program || ""}`, valueX, currentY);
+          context.fillText(`${program || ""}`, valueX, currentY);
 
           context.font = "bold 16px Arial";
           currentY += labelSpacing;
@@ -163,9 +202,7 @@ const IDPage = () => {
 
         if (member.department) {
           if (member.department.length > 32) {
-            context.font = `bold ${
-              (16 * 32) / member.department.length
-            }px Arial`;
+            context.font = calculateFont(member.department, maxTextWidth, 16);
           }
 
           context.fillText(`${member.department || ""}`, valueX, currentY);

@@ -12,6 +12,7 @@ import { useBreakpoint } from "@/lib/client/utils";
 import { useCreateMessageMutation } from "@/lib/client/apiQueries/messageQueries";
 import { Message } from "@/types/message";
 import { useState } from "react";
+import Image from "next/image";
 
 const ContactsPage = () => {
   const { isDarkMode, setIsDarkMode } = useGlobalContext();
@@ -32,16 +33,18 @@ const ContactsPage = () => {
         <img
           src="/sites/contacts/border.png"
           alt="sparky "
-          className="w-full my-8 hidden xl:flex"
+          className="w-full my-8 hidden xl:flex" 
         />
 
         {/* heading part */}
         <div className="flex flex-col xs:flex-row justify-center items-center w-full mx-auto  relative max-w-lg my-8 group gap-4">
           {/* sparky image */}
-          <img
+          <Image
             src="/sites/contacts/sparky.svg"
             alt="sparky "
             className="w-20 xl:w-25 group-hover:rotate-3 transition-all duration-200 max-w-50 aspect-auto group-hover:scale-110"
+            width={0}
+            height={0}
           />
 
           {/* title part */}
@@ -162,10 +165,12 @@ const Informations = () => {
           <div key={index} className="flex flex-col xs:flex-row items-start group ">
             <div className="font-bold group-hover:text-gdg-orange-light transition-all duration-200 flex flex-row items-center gap-2">
               <div className="w-5 aspect-square">
-                <img
+                <Image
                   src={detail.image}
                   alt="sparky "
                   className="w-full h-auto object-cover group-hover:scale-120 transition-all duration-200"
+                  width={100}
+                  height={100}
                 />
               </div>
               <span>{detail.title}:</span>
@@ -355,10 +360,12 @@ const Socials = ({ direction = "row" }: { direction?: "col" | "row" }) => {
             rel="noopener noreferrer"
             className="hover:scale-110 transition-all duration-200"
           >
-            <img
+            <Image
               src={social.image}
               alt={social.image}
               className="w-8 aspect-auto"
+              width={0}
+              height={0}
             />
           </a>
         ))}

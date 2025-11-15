@@ -33,9 +33,12 @@ export const GlobalContextProvider = ({
 }) => {
   const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("darkMode") === "true" || false);
 
-  const setDarkmodeFunc : Dispatch<SetStateAction<boolean>> = (value) => {
+  // const [isDarkMode, setIsDarkMode] = useState(localStorage? localStorage.getItem("darkMode") === "true" || false : false);
+
+  const setDarkmodeFunc: Dispatch<SetStateAction<boolean>> = (value) => {
     setIsDarkMode(value);
-    localStorage.setItem("darkMode", value ? "true" : "false");
+    // localStorage?.setItem("darkMode", value ? "true" : "false");
+    // localStorage.setItem("darkMode", value ? "true" : "false");
   };
 
   const value = { isDarkMode, setIsDarkMode: setDarkmodeFunc };

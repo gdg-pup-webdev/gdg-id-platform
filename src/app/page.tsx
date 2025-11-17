@@ -1,30 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Grid from "@/components/GridBackground";
-import Button from "@/components/Button";
 import SearchForm from "@/components/SearchForm";
-import { DiscAlbum, Download, Search, VectorSquare } from "lucide-react";
-import Link from "next/link";
-import { BsStars } from "react-icons/bs";
-import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import GlowBlobs from "@/components/GlowBlobs";
 
 export default function Home() {
-  const router = useRouter();
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inputRef.current) return;
-    const email = inputRef.current.value;
-    const newRoute = `/ids?email=${email}`;
-    console.log(newRoute);
-    router.push(newRoute);
-  };
-
   return (
     <>
       <div className="relative flex flex-col items-center justify-center min-h-screen w-full overflow-hidden">

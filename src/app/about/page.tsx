@@ -361,12 +361,12 @@ const CONTRIBUTORS: TeamType[] = [
     ],
   },
   {
-    group: "Cyber Security Team",
+    group: "Cybersecurity Team",
     textColor: "green",
     members: [
       {
         name: "Clarisse Jem T. Salazar",
-        image: "/contributors/cards/erwin.png",
+        image: "/contributors/cards/jem.png",
         role: "Cybersecurity Lead",
         fb: "https://web.facebook.com/clarissejem.salazar/",
         ig: "https://www.instagram.com/clarisse_jem/",
@@ -374,7 +374,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "John Victor Claudio A. Duatin",
-        image: "/contributors/cards/rhandie.png",
+        image: "/contributors/cards/jvc.png",
         role: "Cybersecurity Co-Lead",
         fb: "https://www.facebook.com/share/1MsTMwFD5S/",
         ig: "https://www.instagram.com/jvcd.a?igsh=czhrZnB6b3N0c3Jv",
@@ -382,15 +382,15 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Salvador Vincent R. Javier",
-        image: "/contributors/cards/gerald.png",
+        image: "/contributors/cards/vincent.png",
         role: "Cybersecurity Learning Head",
         fb: "https://www.facebook.com/slvdrvncntjvr/",
-        ig: "",
+        ig: "https://www.instagram.com/svjr4k/",
         linkedin: "https://www.linkedin.com/in/salvadorvincentjavier",
       },
       {
         name: "Emmanuel V. Mutas",
-        image: "/contributors/cards/daniella.png",
+        image: "/contributors/cards/emmanuel.png",
         role: "Cybersecurity Learning Head",
         fb: "https://www.facebook.com/manwill04/",
         ig: "https://www.instagram.com/knee_man04/",

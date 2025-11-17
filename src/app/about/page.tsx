@@ -153,13 +153,13 @@ const AboutPage = () => {
                   "font-bold  text-2xl xs:text-2xl sm:text-3xl leading-none",
                   "w-full text-center",
                   team.textColor === "blue" &&
-                    "text-gdg-blue drop-shadow-[0_0_2px_var(--color-gdg-blue)]",
+                    "text-blue-600 drop-shadow-[0_0_2px_var(--color-gdg-blue)]",
                   team.textColor === "orange" &&
-                    "text-gdg-orange drop-shadow-[0_0_2px_var(--color-gdg-orange)]",
+                    "text-orange-600 drop-shadow-[0_0_2px_var(--color-gdg-orange)]",
                   team.textColor === "green" &&
-                    "text-gdg-green drop-shadow-[0_0_2px_var(--color-gdg-green)]",
+                    "text-green-600 drop-shadow-[0_0_2px_var(--color-gdg-green)]",
                   team.textColor === "red" &&
-                    "text-gdg-red drop-shadow-[0_0_2px_var(--color-gdg-red)]"
+                    "text-red-600 drop-shadow-[0_0_2px_var(--color-gdg-red)]"
                 )}
               >
                 {team.group}

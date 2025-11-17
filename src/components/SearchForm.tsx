@@ -8,11 +8,11 @@ import Button from "./Button";
 import { cn } from "@/lib/utils";
 import { getMember } from "@/lib/client/apiEndpoints/memberEndpoints";
 import { Member } from "@/types/member";
+import Image from "next/image";
 
 interface SearchFormProps {
   className?: string;
 }
-
 
 export default function SearchForm({ className }: SearchFormProps) {
   const router = useRouter();
@@ -52,9 +52,9 @@ export default function SearchForm({ className }: SearchFormProps) {
     try {
       // User found, set the result
       const user = await getMember(email);
-      setUserResult(user); 
-    } catch (err) { 
-      if (err instanceof Error) { 
+      setUserResult(user);
+    } catch (err) {
+      if (err instanceof Error) {
         setErrorMessage(err.message);
       }
 
@@ -117,11 +117,14 @@ export default function SearchForm({ className }: SearchFormProps) {
               onClick={userResult ? goToID : undefined}
             >
               <div className="flex-1 flex justify-start items-center gap-[18px]">
-                <img
-                  className="w-[38.88px] h-[38.88px]"
-                  src="/sites/landing/ResultSparky.svg"
-                  alt="User Avatar"
-                />
+                <div className="w-[38.88px] h-[38.88px] relative">
+                  <Image
+                    className="w-[38.88px] h-[38.88px]"
+                    src="/sites/landing/ResultSparky.png"
+                    alt="User Avatar"
+                    fill
+                  />
+                </div>
 
                 {loading && (
                   <div className="text-zinc-800 text-xs sm:text-sm md:text-md lg:text-lg font-medium">

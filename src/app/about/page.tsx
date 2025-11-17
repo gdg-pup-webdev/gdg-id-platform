@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 import { useGlobalContext } from "@/providers/GlobalContextProvider";
 import Link from "next/link";
 import { useState } from "react";
-import Image from "next/image";
 
 const AboutPage = () => {
   const router = useRouter();
@@ -47,8 +46,7 @@ const AboutPage = () => {
        shadow-[0_0_20px_5px_rgba(255,255,255,0.6)] border-4 border-white/60 backdrop-blur-sm 
           -rotate-12 z-10"
       >
-        <Image
-          fill
+        <img
           src="/sites/about/stickerBrackets.gif"
           alt="Sticker Brackets"
           className="w-full h-full object-contain"
@@ -75,13 +73,11 @@ const AboutPage = () => {
 
           {/* Left: Sparky image */}
           <div className="flex-shrink-0 w-full lg:w-1/2 flex justify-center lg:justify-end relative z-20 lg:translate-x-10">
-            <Image
+            <img
               src="/sites/about/animatedCardStack.gif"
               alt="sparky"
               className="w-[90%] sm:w-[80%] lg:w-full max-w-[620px] aspect-auto 
-              -mr-0 sm:-mr-8 lg:-mr-5 xl:-mr-14 -mb-10 lg:-mb-20"
-              width={0}
-              height={0}
+              -mr-0 sm:-mr-8 lg:-mr-14 -mb-10 lg:-mb-20"
             />
           </div>
 
@@ -169,7 +165,7 @@ const AboutPage = () => {
                 {team.group}
               </div>
               {/* team members */}
-              {index === 2 && (
+              {index === 3 && (
                 <div className="  w-full  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:flex lg:flex-row lg:flex-wrap lg:justify-center lg:grid-cols-none  gap-0">
                   {team.members.map((member, index) => (
                     <div
@@ -182,7 +178,7 @@ const AboutPage = () => {
                 </div>
               )}
 
-              {index !== 2 && (
+              {index !== 3 && (
                 <div className="  w-full  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:flex lg:flex-row lg:justify-center lg:grid-cols-none  gap-0">
                   {team.members.map((member, index) => (
                     <MemberCard key={index} member={member} />
@@ -221,17 +217,11 @@ const MemberCard = ({ member }: { member: MemberType }) => {
       }}
     >
       {/* card template */}
-      <div className="relative w-full h-full ">
-        <Image
-          src={member.image}
-          alt="contributor card"
-          // fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          width={768}
-          height={1200}
-        />
-      </div>
+      <img
+        src={member.image}
+        alt="contributor card"
+        className="w-full h-auto object-cover"
+      />
 
       <div className="w-full flex flex-row justify-center gap-[3.5%] absolute bottom-[18.5%] left-1/2 -translate-x-1/2 ">
         {member.fb && (
@@ -240,12 +230,10 @@ const MemberCard = ({ member }: { member: MemberType }) => {
             href={member.fb}
             target="_blank"
           >
-            <Image
+            <img
               src="/contributors/fb.svg"
               alt="contributor card"
               className=" w-full h-full object-cover "
-              width={0}
-              height={0}
             />
           </Link>
         )}
@@ -255,12 +243,10 @@ const MemberCard = ({ member }: { member: MemberType }) => {
             href={member.ig}
             target="_blank"
           >
-            <Image
+            <img
               src="/contributors/ig.svg"
               alt="contributor card"
               className=" w-full h-full object-cover "
-              width={0}
-              height={0}
             />
           </Link>
         )}
@@ -270,12 +256,10 @@ const MemberCard = ({ member }: { member: MemberType }) => {
             href={member.linkedin}
             target="_blank"
           >
-            <Image
+            <img
               src="/contributors/linkedin.svg"
               alt="contributor card"
               className=" w-full h-full object-cover "
-              width={0}
-              height={0}
             />
           </Link>
         )}
@@ -377,6 +361,44 @@ const CONTRIBUTORS: TeamType[] = [
     ],
   },
   {
+    group: "Cyber Security Team",
+    textColor: "green",
+    members: [
+      {
+        name: "Clarisse Jem T. Salazar",
+        image: "/contributors/cards/erwin.png",
+        role: "Cybersecurity Lead",
+        fb: "https://web.facebook.com/clarissejem.salazar/",
+        ig: "https://www.instagram.com/clarisse_jem/",
+        linkedin: "https://www.linkedin.com/in/clarisse-jem-salazar/",
+      },
+      {
+        name: "John Victor Claudio A. Duatin",
+        image: "/contributors/cards/rhandie.png",
+        role: "Cybersecurity Co-Lead",
+        fb: "https://www.facebook.com/share/1MsTMwFD5S/",
+        ig: "https://www.instagram.com/jvcd.a?igsh=czhrZnB6b3N0c3Jv",
+        linkedin: "https://www.linkedin.com/in/jvc-duatin",
+      },
+      {
+        name: "Salvador Vincent R. Javier",
+        image: "/contributors/cards/gerald.png",
+        role: "Cybersecurity Learning Head",
+        fb: "https://www.facebook.com/slvdrvncntjvr/",
+        ig: "",
+        linkedin: "https://www.linkedin.com/in/salvadorvincentjavier",
+      },
+      {
+        name: "Emmanuel V. Mutas",
+        image: "/contributors/cards/daniella.png",
+        role: "Cybersecurity Learning Head",
+        fb: "https://www.facebook.com/manwill04/",
+        ig: "https://www.instagram.com/knee_man04/",
+        linkedin: "https://www.linkedin.com/in/manel04/",
+      },
+    ],
+  },
+  {
     group: "Executive Technology Team",
     textColor: "blue",
     members: [
@@ -405,20 +427,20 @@ const CONTRIBUTORS: TeamType[] = [
         linkedin: "https://www.linkedin.com/in/ajsadullo/",
       },
       {
-        name: "Randy Carlo Lorenzo",
-        image: "/contributors/cards/randy.png",
-        role: "Chapter Lead & President",
-        fb: "https://www.facebook.com/randycarlo.lorenzo",
-        ig: "https://www.instagram.com/randy_lrnz/",
-        linkedin: "https://www.linkedin.com/in/randycarlolorenzo/ ",
-      },
-      {
         name: "Shunrenn Locaylocay",
         image: "/contributors/cards/shunrenn.png",
         role: "Chief Executive Officer",
         fb: "https://www.facebook.com/shun.locs ",
         ig: "https://www.instagram.com/shun_locs/ ",
         linkedin: "https://ph.linkedin.com/in/shunrenn-locaylocay/",
+      },
+      {
+        name: "Randy Carlo Lorenzo",
+        image: "/contributors/cards/randy.png",
+        role: "Chapter Lead & President",
+        fb: "https://www.facebook.com/randycarlo.lorenzo",
+        ig: "https://www.instagram.com/randy_lrnz/",
+        linkedin: "https://www.linkedin.com/in/randycarlolorenzo/ ",
       },
     ],
   },

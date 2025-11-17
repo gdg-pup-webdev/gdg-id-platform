@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { useGlobalContext } from "@/providers/GlobalContextProvider";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 const AboutPage = () => {
   const router = useRouter();
@@ -46,7 +47,8 @@ const AboutPage = () => {
        shadow-[0_0_20px_5px_rgba(255,255,255,0.6)] border-4 border-white/60 backdrop-blur-sm 
           -rotate-12 z-10"
       >
-        <img
+        <Image
+          fill
           src="/sites/about/stickerBrackets.gif"
           alt="Sticker Brackets"
           className="w-full h-full object-contain"
@@ -73,11 +75,13 @@ const AboutPage = () => {
 
           {/* Left: Sparky image */}
           <div className="flex-shrink-0 w-full lg:w-1/2 flex justify-center lg:justify-end relative z-20 lg:translate-x-10">
-            <img
+            <Image
               src="/sites/about/animatedCardStack.gif"
               alt="sparky"
               className="w-[90%] sm:w-[80%] lg:w-full max-w-[620px] aspect-auto 
-              -mr-0 sm:-mr-8 lg:-mr-14 -mb-10 lg:-mb-20"
+              -mr-0 sm:-mr-8 lg:-mr-5 xl:-mr-14 -mb-10 lg:-mb-20"
+              width={0}
+              height={0}
             />
           </div>
 
@@ -217,10 +221,14 @@ const MemberCard = ({ member }: { member: MemberType }) => {
       }}
     >
       {/* card template */}
-      <img
+      <Image
         src={member.image}
         alt="contributor card"
-        className="w-full h-auto object-cover"
+        // fill
+        className="object-cover"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        width={768}
+        height={1200}
       />
 
       <div className="w-full flex flex-row justify-center gap-[3.5%] absolute bottom-[18.5%] left-1/2 -translate-x-1/2 ">
@@ -230,10 +238,12 @@ const MemberCard = ({ member }: { member: MemberType }) => {
             href={member.fb}
             target="_blank"
           >
-            <img
+            <Image
               src="/contributors/fb.svg"
               alt="contributor card"
               className=" w-full h-full object-cover "
+              width={0}
+              height={0}
             />
           </Link>
         )}
@@ -243,10 +253,12 @@ const MemberCard = ({ member }: { member: MemberType }) => {
             href={member.ig}
             target="_blank"
           >
-            <img
+            <Image
               src="/contributors/ig.svg"
               alt="contributor card"
               className=" w-full h-full object-cover "
+              width={0}
+              height={0}
             />
           </Link>
         )}
@@ -256,10 +268,12 @@ const MemberCard = ({ member }: { member: MemberType }) => {
             href={member.linkedin}
             target="_blank"
           >
-            <img
+            <Image
               src="/contributors/linkedin.svg"
               alt="contributor card"
               className=" w-full h-full object-cover "
+              width={0}
+              height={0}
             />
           </Link>
         )}

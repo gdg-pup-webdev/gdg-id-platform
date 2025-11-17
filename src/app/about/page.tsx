@@ -221,15 +221,17 @@ const MemberCard = ({ member }: { member: MemberType }) => {
       }}
     >
       {/* card template */}
-      <Image
-        src={member.image}
-        alt="contributor card"
-        // fill
-        className="object-cover"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        width={768}
-        height={1200}
-      />
+      <div className="relative w-full h-full ">
+        <Image
+          src={member.image}
+          alt="contributor card"
+          // fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          width={768}
+          height={1200}
+        />
+      </div>
 
       <div className="w-full flex flex-row justify-center gap-[3.5%] absolute bottom-[18.5%] left-1/2 -translate-x-1/2 ">
         {member.fb && (

@@ -7,20 +7,12 @@ import { BsStars } from "react-icons/bs";
 import Button from "./Button";
 import { cn } from "@/lib/utils";
 import { getMember } from "@/lib/client/apiEndpoints/memberEndpoints";
-import { error } from "console";
 import { Member } from "@/types/member";
 
 interface SearchFormProps {
   className?: string;
 }
 
-interface UserResult {
-  displayName: string;
-  gdgId: string;
-  name: string;
-  email: string;
-  course: string;
-}
 
 export default function SearchForm({ className }: SearchFormProps) {
   const router = useRouter();
@@ -60,12 +52,9 @@ export default function SearchForm({ className }: SearchFormProps) {
     try {
       // User found, set the result
       const user = await getMember(email);
-      setUserResult(user);
-      console.log("User found:", user);
-    } catch (err) {
-      console.error("Error querying user:", err);
-      if (err instanceof Error) {
-        console.log("message", err.message);
+      setUserResult(user); 
+    } catch (err) { 
+      if (err instanceof Error) { 
         setErrorMessage(err.message);
       }
 

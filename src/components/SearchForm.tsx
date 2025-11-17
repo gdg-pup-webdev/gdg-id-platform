@@ -14,10 +14,6 @@ interface SearchFormProps {
   className?: string;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c61b4b09c10837e35d094fdc35858bc4f7875db7
 export default function SearchForm({ className }: SearchFormProps) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);

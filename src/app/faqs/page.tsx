@@ -21,13 +21,15 @@ const FAQsPage = () => {
         {/* heading part */}
         <div className="flex flex-row justify-center items-center w-full mx-auto  relative max-w-lg py-8 group">
           {/* sparky image */}
-          <img
-            src="/sites/faqs/SittingSparky.png"
-            alt="sparky "
-            className="w-[30%] xs:w-[20%] md:w-[30%] lg:w-[40%] group-hover:rotate-3 transition-all duration-200 max-w-50 aspect-auto "
-            width={0}
-            height={0}
-          />
+          <div className="w-[30%] xs:w-[20%] md:w-[30%] lg:w-[40%] group-hover:rotate-3 transition-all duration-200 max-w-50 aspect-auto ">
+            <Image
+              src="/sites/faqs/SittingSparky.png"
+              alt="sparky "
+              width={624}
+              height={856}
+            />
+          </div>
+
           <div className="flex flex-col gap-2">
             <h1
               className={cn(

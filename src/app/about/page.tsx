@@ -157,19 +157,19 @@ const AboutPage = () => {
                   "font-bold  text-2xl xs:text-2xl sm:text-3xl leading-none",
                   "w-full text-center",
                   team.textColor === "blue" &&
-                    "text-gdg-blue drop-shadow-[0_0_2px_var(--color-gdg-blue)]",
+                    "text-blue-600 drop-shadow-[0_0_2px_var(--color-gdg-blue)]",
                   team.textColor === "orange" &&
-                    "text-gdg-orange drop-shadow-[0_0_2px_var(--color-gdg-orange)]",
+                    "text-orange-600 drop-shadow-[0_0_2px_var(--color-gdg-orange)]",
                   team.textColor === "green" &&
-                    "text-gdg-green drop-shadow-[0_0_2px_var(--color-gdg-green)]",
+                    "text-green-600 drop-shadow-[0_0_2px_var(--color-gdg-green)]",
                   team.textColor === "red" &&
-                    "text-gdg-red drop-shadow-[0_0_2px_var(--color-gdg-red)]"
+                    "text-red-600 drop-shadow-[0_0_2px_var(--color-gdg-red)]"
                 )}
               >
                 {team.group}
               </div>
               {/* team members */}
-              {index === 2 && (
+              {index === 3 && (
                 <div className="  w-full  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:flex lg:flex-row lg:flex-wrap lg:justify-center lg:grid-cols-none  gap-0">
                   {team.members.map((member, index) => (
                     <div
@@ -182,7 +182,7 @@ const AboutPage = () => {
                 </div>
               )}
 
-              {index !== 2 && (
+              {index !== 3 && (
                 <div className="  w-full  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:flex lg:flex-row lg:justify-center lg:grid-cols-none  gap-0">
                   {team.members.map((member, index) => (
                     <MemberCard key={index} member={member} />
@@ -377,6 +377,44 @@ const CONTRIBUTORS: TeamType[] = [
     ],
   },
   {
+    group: "Cybersecurity Team",
+    textColor: "green",
+    members: [
+      {
+        name: "Clarisse Jem T. Salazar",
+        image: "/contributors/cards/jem.png",
+        role: "Cybersecurity Lead",
+        fb: "https://web.facebook.com/clarissejem.salazar/",
+        ig: "https://www.instagram.com/clarisse_jem/",
+        linkedin: "https://www.linkedin.com/in/clarisse-jem-salazar/",
+      },
+      {
+        name: "John Victor Claudio A. Duatin",
+        image: "/contributors/cards/jvc.png",
+        role: "Cybersecurity Co-Lead",
+        fb: "https://www.facebook.com/share/1MsTMwFD5S/",
+        ig: "https://www.instagram.com/jvcd.a?igsh=czhrZnB6b3N0c3Jv",
+        linkedin: "https://www.linkedin.com/in/jvc-duatin",
+      },
+      {
+        name: "Salvador Vincent R. Javier",
+        image: "/contributors/cards/vincent.png",
+        role: "Cybersecurity Learning Head",
+        fb: "https://www.facebook.com/slvdrvncntjvr/",
+        ig: "https://www.instagram.com/svjr4k/",
+        linkedin: "https://www.linkedin.com/in/salvadorvincentjavier",
+      },
+      {
+        name: "Emmanuel V. Mutas",
+        image: "/contributors/cards/emmanuel.png",
+        role: "Cybersecurity Learning Head",
+        fb: "https://www.facebook.com/manwill04/",
+        ig: "https://www.instagram.com/knee_man04/",
+        linkedin: "https://www.linkedin.com/in/manel04/",
+      },
+    ],
+  },
+  {
     group: "Executive Technology Team",
     textColor: "blue",
     members: [
@@ -405,20 +443,20 @@ const CONTRIBUTORS: TeamType[] = [
         linkedin: "https://www.linkedin.com/in/ajsadullo/",
       },
       {
-        name: "Randy Carlo Lorenzo",
-        image: "/contributors/cards/randy.png",
-        role: "Chapter Lead & President",
-        fb: "https://www.facebook.com/randycarlo.lorenzo",
-        ig: "https://www.instagram.com/randy_lrnz/",
-        linkedin: "https://www.linkedin.com/in/randycarlolorenzo/ ",
-      },
-      {
         name: "Shunrenn Locaylocay",
         image: "/contributors/cards/shunrenn.png",
         role: "Chief Executive Officer",
         fb: "https://www.facebook.com/shun.locs ",
         ig: "https://www.instagram.com/shun_locs/ ",
         linkedin: "https://ph.linkedin.com/in/shunrenn-locaylocay/",
+      },
+      {
+        name: "Randy Carlo Lorenzo",
+        image: "/contributors/cards/randy.png",
+        role: "Chapter Lead & President",
+        fb: "https://www.facebook.com/randycarlo.lorenzo",
+        ig: "https://www.instagram.com/randy_lrnz/",
+        linkedin: "https://www.linkedin.com/in/randycarlolorenzo/ ",
       },
     ],
   },

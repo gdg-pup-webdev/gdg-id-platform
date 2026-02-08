@@ -23,7 +23,7 @@ const FAQsPage = () => {
           {/* sparky image */}
           <div className="w-[30%] xs:w-[20%] md:w-[30%] lg:w-[40%] group-hover:rotate-3 transition-all duration-200 max-w-50 aspect-auto ">
             <Image
-              src="/sites/faqs/SittingSparky.png"
+              src="/sites/faqs/SittingSparky.webp"
               alt="sparky "
               width={624}
               height={856}

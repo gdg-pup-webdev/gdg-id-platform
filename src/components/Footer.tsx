@@ -25,7 +25,7 @@ const Footer = () => {
     >
       <div className="w-full max-w-7xl mx-auto overflow-x-hidden px-0 relative">
         <Image
-          src="/sites/contacts/border.png"
+          src="/sites/contacts/border.webp"
           alt="Footer border"
           width={1920}
           height={100}
@@ -53,8 +53,8 @@ const Footer = () => {
           <Image
             src={
               isDarkMode
-                ? "/sites/footer/gdgnewnewlogo.png"
-                : "/sites/footer/gdgnewlogo.png"
+                ? "/sites/footer/gdgnewnewlogo.webp"
+                : "/sites/footer/gdgnewlogo.webp"
             }
             alt="GDG Footer Logo"
             width={150}

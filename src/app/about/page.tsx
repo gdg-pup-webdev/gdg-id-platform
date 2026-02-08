@@ -306,7 +306,7 @@ const CONTRIBUTORS: TeamType[] = [
     members: [
       {
         name: "Jedia Nicole Sagun",
-        image: "/contributors/cards/jedia.png",
+        image: "/contributors/cards/jedia.webp",
         role: "UI/UX Designer",
         fb: "https://www.facebook.com/jedianicole.sagun/",
         ig: "https://www.instagram.com/_jnsagun/",
@@ -314,7 +314,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Kassandra Rychelle Balona",
-        image: "/contributors/cards/kassandra.png",
+        image: "/contributors/cards/kassandra.webp",
         role: "UI/UX Designer",
         fb: "https://www.facebook.com/kasrych",
         ig: "https://www.instagram.com/kasrych/",
@@ -322,7 +322,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Joyrel Baladjay",
-        image: "/contributors/cards/joyrel.png",
+        image: "/contributors/cards/joyrel.webp",
         role: "UI/UI Designer",
         fb: "https://www.facebook.com/joyyirel",
         ig: "https://www.instagram.com/joyyirel/",
@@ -330,7 +330,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Kacey Michaela Solis",
-        image: "/contributors/cards/kacey.png",
+        image: "/contributors/cards/kacey.webp",
         role: "UI/UI Designer",
         fb: "https://www.facebook.com/kayex13/",
         ig: "https://www.instagram.com/miikayella/",
@@ -344,7 +344,7 @@ const CONTRIBUTORS: TeamType[] = [
     members: [
       {
         name: "Erwin Daguinotas",
-        image: "/contributors/cards/erwin.png",
+        image: "/contributors/cards/erwin.webp",
         role: "Full Stack Developer",
         fb: "https://www.facebook.com/DaguinotasErwin",
         ig: "https://www.instagram.com/winnnwnwnwn/",
@@ -352,7 +352,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Rhandie Sales Jr",
-        image: "/contributors/cards/rhandie.png",
+        image: "/contributors/cards/rhandie.webp",
         role: "Full Stack Developer",
         fb: "https://www.facebook.com/rhandie.sales.1",
         ig: "https://www.instagram.com/rhandiejrr/",
@@ -360,7 +360,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Gerald Berongoy",
-        image: "/contributors/cards/gerald.png",
+        image: "/contributors/cards/gerald.webp",
         role: "Full Stack Developer",
         fb: "https://www.facebook.com/gerald.berongoy0904#",
         ig: "https://www.instagram.com/g333rald",
@@ -368,7 +368,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Daniella Simara",
-        image: "/contributors/cards/daniella.png",
+        image: "/contributors/cards/daniella.webp",
         role: "Full Stack Developer",
         fb: "https://www.facebook.com/share/1Ee1wU4gyA/",
         ig: "https://www.instagram.com/d.simara_?igsh=dzAyems5YXg5Z2Zk",
@@ -382,7 +382,7 @@ const CONTRIBUTORS: TeamType[] = [
     members: [
       {
         name: "Clarisse Jem T. Salazar",
-        image: "/contributors/cards/jem.png",
+        image: "/contributors/cards/jem.webp",
         role: "Cybersecurity Lead",
         fb: "https://web.facebook.com/clarissejem.salazar/",
         ig: "https://www.instagram.com/clarisse_jem/",
@@ -390,7 +390,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "John Victor Claudio A. Duatin",
-        image: "/contributors/cards/jvc.png",
+        image: "/contributors/cards/jvc.webp",
         role: "Cybersecurity Co-Lead",
         fb: "https://www.facebook.com/share/1MsTMwFD5S/",
         ig: "https://www.instagram.com/jvcd.a?igsh=czhrZnB6b3N0c3Jv",
@@ -398,7 +398,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Salvador Vincent R. Javier",
-        image: "/contributors/cards/vincent.png",
+        image: "/contributors/cards/vincent.webp",
         role: "Cybersecurity Learning Head",
         fb: "https://www.facebook.com/slvdrvncntjvr/",
         ig: "https://www.instagram.com/svjr4k/",
@@ -406,7 +406,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Emmanuel V. Mutas",
-        image: "/contributors/cards/emmanuel.png",
+        image: "/contributors/cards/emmanuel.webp",
         role: "Cybersecurity Learning Head",
         fb: "https://www.facebook.com/manwill04/",
         ig: "https://www.instagram.com/knee_man04/",
@@ -420,7 +420,7 @@ const CONTRIBUTORS: TeamType[] = [
     members: [
       {
         name: "Carlos Jerico Dela Torre",
-        image: "/contributors/cards/jerico.png",
+        image: "/contributors/cards/jerico.webp",
         role: "Chief Technology Officer",
         fb: "https://www.facebook.com/2iLiTE/",
         ig: "https://www.instagram.com/__rikin__/",
@@ -428,7 +428,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Nyzel Cayat",
-        image: "/contributors/cards/nyzel.png",
+        image: "/contributors/cards/nyzel.webp",
         role: "Deputy Chief Technology Officer",
         fb: "https://www.facebook.com/chiaki.wme",
         ig: "https://www.instagram.com/chiaki.wme",
@@ -436,7 +436,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Aurold John Sadullo",
-        image: "/contributors/cards/aj.png",
+        image: "/contributors/cards/aj.webp",
         role: "Deputy Chief Technology Officer",
         fb: "https://www.facebook.com/ajsadullo",
         ig: "https://www.instagram.com/ajsdllo/",
@@ -444,7 +444,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Shunrenn Locaylocay",
-        image: "/contributors/cards/shunrenn.png",
+        image: "/contributors/cards/shunrenn.webp",
         role: "Chief Executive Officer",
         fb: "https://www.facebook.com/shun.locs ",
         ig: "https://www.instagram.com/shun_locs/ ",
@@ -452,7 +452,7 @@ const CONTRIBUTORS: TeamType[] = [
       },
       {
         name: "Randy Carlo Lorenzo",
-        image: "/contributors/cards/randy.png",
+        image: "/contributors/cards/randy.webp",
         role: "Chapter Lead & President",
         fb: "https://www.facebook.com/randycarlo.lorenzo",
         ig: "https://www.instagram.com/randy_lrnz/",

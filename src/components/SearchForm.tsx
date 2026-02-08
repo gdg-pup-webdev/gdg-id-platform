@@ -120,7 +120,7 @@ export default function SearchForm({ className }: SearchFormProps) {
                 <div className="w-[38.88px] h-[38.88px] relative">
                   <Image
                     className="w-[38.88px] h-[38.88px]"
-                    src="/sites/landing/ResultSparky.png"
+                    src="/sites/landing/ResultSparky.webp"
                     alt="User Avatar"
                     fill
                   />

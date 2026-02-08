@@ -325,8 +325,8 @@ const IDPage = () => {
               <img
                 src={
                   isDarkMode
-                    ? "/sites/idgenerate/GDGLogo_Dark.png"
-                    : "/sites/idgenerate/GDGLogo_Light.png"
+                    ? "/sites/idgenerate/GDGLogo_Dark.webp"
+                    : "/sites/idgenerate/GDGLogo_Light.webp"
                 }
                 alt="GDG Logo Light"
                 className="  h-auto w-full object-contain mx-auto"

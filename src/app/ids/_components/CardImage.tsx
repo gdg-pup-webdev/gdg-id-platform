@@ -75,7 +75,7 @@ export const CardImage = ({
             <>
               {/* BACK IMAGE */}
               <img
-                src="/backcard.png"
+                src="/backcard.webp"
                 alt="GDG ID Back"
                 className="absolute top-1/2 left-1/2 
                              -translate-x-1/2 -translate-y-1/2 

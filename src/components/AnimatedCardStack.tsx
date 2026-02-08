@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const cards = [
-  { id: 1, src: "/cards/front.png", z: 5 },
-  { id: 2, src: "/cards/red.png", z: 4 },
-  { id: 3, src: "/cards/yellow.png", z: 3 },
-  { id: 4, src: "/cards/green.png", z: 2 },
-  { id: 5, src: "/cards/blue.png", z: 1 },
+  { id: 1, src: "/cards/front.webp", z: 5 },
+  { id: 2, src: "/cards/red.webp", z: 4 },
+  { id: 3, src: "/cards/yellow.webp", z: 3 },
+  { id: 4, src: "/cards/green.webp", z: 2 },
+  { id: 5, src: "/cards/blue.webp", z: 1 },
 ];
 
 // Tune how much you see of the sides

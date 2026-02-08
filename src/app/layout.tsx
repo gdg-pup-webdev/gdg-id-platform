@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "GDG PUP Digital ID Platform",
     images: [
       {
-        url: "/gdgprofile.jpg",
+        url: "/gdgprofile.webp",
         width: 1200,
         height: 630,
         alt: "GDG PUP Digital ID Platform",

@@ -1,4 +1,3 @@
-
 import { Member } from "@/types/member";
 import { useQuery } from "@tanstack/react-query";
 import { getMember } from "../apiEndpoints/memberEndpoints";
@@ -12,6 +11,7 @@ export function useMemberQuery(email?: string) {
       return response;
     },
     enabled: !!email,
+    staleTime: 1000 * 60 * 5, // Cache for 5 minutes
   });
 
   return { member, ...rest };

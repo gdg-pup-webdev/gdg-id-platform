@@ -6,8 +6,7 @@ import { Search } from "lucide-react";
 import { BsStars } from "react-icons/bs";
 import Button from "./Button";
 import { cn } from "@/lib/utils";
-import { getMember } from "@/lib/client/apiEndpoints/memberEndpoints";
-import { Member } from "@/types/member";
+import { useMemberQuery } from "@/lib/client/apiQueries/memberQueries";
 import Image from "next/image";
 
 interface SearchFormProps {
@@ -19,11 +18,14 @@ export default function SearchForm({ className }: SearchFormProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [userResult, setUserResult] = useState<Member | null>(null);
-  const [loading, setLoading] = useState(false);
   const [inputWidth, setInputWidth] = useState(0);
 
-  const [errorMessage, setErrorMessage] = useState("");
+  const {
+    member: userResult,
+    isLoading,
+    isError,
+    error,
+  } = useMemberQuery(searchQuery || undefined);
 
   // Update input width when component mounts or window resizes
   useEffect(() => {
@@ -39,29 +41,13 @@ export default function SearchForm({ className }: SearchFormProps) {
     return () => window.removeEventListener("resize", updateInputWidth);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!inputRef.current) return;
 
     const email = inputRef.current.value.trim();
     if (!email) return;
     setSearchQuery(email);
-    setLoading(true);
-    setErrorMessage("");
-
-    try {
-      // User found, set the result
-      const user = await getMember(email);
-      setUserResult(user);
-    } catch (err) {
-      if (err instanceof Error) {
-        setErrorMessage(err.message);
-      }
-
-      setUserResult(null);
-    } finally {
-      setLoading(false);
-    }
   };
 
   const goToID = () => {
@@ -126,25 +112,25 @@ export default function SearchForm({ className }: SearchFormProps) {
                   />
                 </div>
 
-                {loading && (
+                {isLoading && (
                   <div className="text-zinc-800 text-xs sm:text-sm md:text-md lg:text-lg font-medium">
                     Loading...
                   </div>
                 )}
 
-                {!loading && errorMessage && (
+                {!isLoading && isError && (
                   <div className="text-zinc-800 text-xs sm:text-sm md:text-md lg:text-lg font-medium">
-                    {errorMessage}
+                    {error instanceof Error ? error.message : "User not found"}
                   </div>
                 )}
 
-                {!loading && !errorMessage && userResult && (
+                {!isLoading && !isError && userResult && (
                   <div className="text-zinc-800 text-xs sm:text-sm md:text-md lg:text-lg font-bold leading-normal">
                     {userResult.displayName}
                   </div>
                 )}
 
-                {!loading && !errorMessage && !userResult && (
+                {!isLoading && !isError && !userResult && (
                   <div className="text-zinc-800 text-xs sm:text-sm md:text-md lg:text-lg font-medium">
                     No user found
                   </div>

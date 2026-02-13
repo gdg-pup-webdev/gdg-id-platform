@@ -43,7 +43,9 @@ export const sendEmailToAdmin = async (message: Message) => {
     throw new Error("Admin email is not configured.");
   }
 
-  const platformLink = "https://gdg-id-platform.vercel.app/admin";
+  const siteUrl = process.env.SITE_URL;
+
+  const platformLink = siteUrl ? `${siteUrl}/admin` : "#";
 
   const subject = `GDG ID Platform - New Message from ${message.name}`;
 

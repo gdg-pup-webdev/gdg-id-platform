@@ -6,5 +6,5 @@ export type Member = {
   displayName: string;
   firstName: string;
   lastName: string;
-  middleName: string;
+  suffix: string;
 };

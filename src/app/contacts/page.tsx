@@ -31,7 +31,7 @@ const ContactsPage = () => {
       <div className="w-full flex flex-col px-4 max-w-7xl mx-auto z-10 relative">
         {/* border image at the top */}
         <img
-          src="/sites/contacts/border.png"
+          src="/sites/contacts/border.webp"
           alt="sparky "
           className="w-full my-8 hidden xl:flex" 
         />

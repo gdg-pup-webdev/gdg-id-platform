@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Public environment variables
+        NEXT_PUBLIC_ENV: ${NEXT_PUBLIC_ENV:-production}
+        NEXT_PUBLIC_APIKEY: ${NEXT_PUBLIC_APIKEY}
+        NEXT_PUBLIC_AUTHDOMAIN: ${NEXT_PUBLIC_AUTHDOMAIN}
+        NEXT_PUBLIC_PROJECTID: ${NEXT_PUBLIC_PROJECTID}
+        NEXT_PUBLIC_STORAGEBUCKET: ${NEXT_PUBLIC_STORAGEBUCKET}
+        NEXT_PUBLIC_MESSAGINGSENDERID: ${NEXT_PUBLIC_MESSAGINGSENDERID}
+        NEXT_PUBLIC_APPID: ${NEXT_PUBLIC_APPID}
+        NEXT_PUBLIC_MEASUREMENTID: ${NEXT_PUBLIC_MEASUREMENTID}
+
+        # Server-side secrets
+        SUPABASE_URL: ${SUPABASE_URL}
+        SUPABASE_SECRET_KEY: ${SUPABASE_SECRET_KEY}
+        GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+        GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+        GOOGLE_REFRESH_TOKEN: ${GOOGLE_REFRESH_TOKEN}
+        ADMIN_EMAIL: ${ADMIN_EMAIL}
+        FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID}
+        FIREBASE_CLIENT_EMAIL: ${FIREBASE_CLIENT_EMAIL}
+        FIREBASE_PRIVATE_KEY: ${FIREBASE_PRIVATE_KEY}
+
+    image: asia-southeast1-docker.pkg.dev/gdgpup-484914/id-platform/gdg-id-platform:latest
+    container_name: gdg-app
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+    # Optional: Add health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

@@ -28,14 +28,14 @@ const calculateFont = (
   text: string,
   maxWidthPixels: number,
   normalFontSize: number,
-  bold: boolean = true
+  bold: boolean = true,
 ): string => {
   // Create a canvas context for measuring text
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
   const fontWeight = bold ? "bold" : "normal";
-  
+
   if (!ctx) return `${fontWeight} ${normalFontSize}px Arial`;
 
   let fontSize = normalFontSize;
@@ -110,7 +110,7 @@ const IDPage = () => {
         context.fillStyle = "#1a1a1a";
 
         // Display name
-        const displayName =  member.displayName || "";
+        const displayName = member.displayName || "";
         context.font = calculateFont(displayName || "", 180, 32);
         context.fillText(displayName || "", width / 2, 465);
 
@@ -131,7 +131,7 @@ const IDPage = () => {
 
         const maxTextWidth = width - 180 - 70;
 
-        if (member.firstName || member.middleName || member.lastName) {
+        if (member.firstName || member.suffix || member.lastName) {
           context.fillText(`Name:`, labelX, currentY);
           currentY += labelSpacing;
         }
@@ -156,10 +156,10 @@ const IDPage = () => {
         currentY = 575;
 
         const fullName = `${member.firstName || ""}${
-          member.middleName ? ` ${member.middleName}` : ""
-        }${member.lastName ? ` ${member.lastName}` : ""}`;
+          member.lastName ? ` ${member.lastName}` : ""
+        }${member.suffix ? ` ${member.suffix}` : ""}`;
 
-        if (member.firstName || member.middleName || member.lastName) {
+        if (member.firstName || member.suffix || member.lastName) {
           if (fullName.length > 32) {
             context.font = calculateFont(fullName, maxTextWidth, 16);
           }
@@ -325,8 +325,8 @@ const IDPage = () => {
               <img
                 src={
                   isDarkMode
-                    ? "/sites/idgenerate/GDGLogo_Dark.png"
-                    : "/sites/idgenerate/GDGLogo_Light.png"
+                    ? "/sites/idgenerate/GDGLogo_Dark.webp"
+                    : "/sites/idgenerate/GDGLogo_Light.webp"
                 }
                 alt="GDG Logo Light"
                 className="  h-auto w-full object-contain mx-auto"

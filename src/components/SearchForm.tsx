@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Search } from "lucide-react";
+import { Check, Copy, Search } from "lucide-react";
 import { BsStars } from "react-icons/bs";
 import Button from "./Button";
 import { cn } from "@/lib/utils";
@@ -19,6 +19,7 @@ export default function SearchForm({ className }: SearchFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [inputWidth, setInputWidth] = useState(0);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const {
     member: userResult,
@@ -55,6 +56,27 @@ export default function SearchForm({ className }: SearchFormProps) {
       // User found, redirect to /ids
       router.push(`/ids?email=${encodeURIComponent(userResult.email)}`);
     }
+  };
+
+  const copyMemberId = async (event: React.MouseEvent, gdgId: string) => {
+    event.stopPropagation();
+
+    try {
+      await navigator.clipboard.writeText(gdgId);
+    } catch {
+      const textArea = document.createElement("textarea");
+      textArea.value = gdgId;
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+    }
+
+    setCopiedId(gdgId);
+    window.setTimeout(() => setCopiedId((prev) => (prev === gdgId ? null : prev)), 1200);
   };
 
   // Close search results when clicking outside
@@ -102,7 +124,7 @@ export default function SearchForm({ className }: SearchFormProps) {
               )}
               onClick={userResult ? goToID : undefined}
             >
-              <div className="flex-1 flex justify-start items-center gap-[18px]">
+              <div className="flex-1 w-full flex justify-start items-center gap-[18px]">
                 <div className="w-[38.88px] h-[38.88px] relative">
                   <Image
                     className="w-[38.88px] h-[38.88px]"
@@ -125,8 +147,29 @@ export default function SearchForm({ className }: SearchFormProps) {
                 )}
 
                 {!isLoading && !isError && userResult && (
-                  <div className="text-zinc-800 text-xs sm:text-sm md:text-md lg:text-lg font-bold leading-normal">
-                    {userResult.displayName}
+                  <div className="flex-1 min-w-0 flex items-center justify-between gap-2">
+                    <div className="text-zinc-800 text-xs sm:text-sm md:text-md lg:text-lg font-bold leading-normal truncate">
+                      {`${userResult.displayName} (${userResult.gdgId})`}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={(event) => copyMemberId(event, userResult.gdgId)}
+                      className="shrink-0 inline-flex items-center gap-1 rounded-md border border-slate-300 bg-white px-2 py-1 text-[11px] sm:text-xs text-slate-700 hover:bg-slate-100"
+                      aria-label={`Copy GDG ID ${userResult.gdgId}`}
+                      title="Copy GDG ID"
+                    >
+                      {copiedId === userResult.gdgId ? (
+                        <>
+                          <Check className="size-3.5" />
+                          <span>Copied</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="size-3.5" />
+                          <span>Copy</span>
+                        </>
+                      )}
+                    </button>
                   </div>
                 )}
 

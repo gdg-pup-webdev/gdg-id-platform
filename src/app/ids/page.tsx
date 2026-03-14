@@ -15,6 +15,7 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { useMemberQuery } from "@/lib/client/apiQueries/memberQueries";
 import { CardImage } from "./_components/CardImage";
+import { useQrCode } from "./_components/useQrCode";
 
 export default function TrueIdPageWithSuspenseBoundary() {
   return (
@@ -58,6 +59,18 @@ const IDPage = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { member, isLoading, isError, error } = useMemberQuery(email);
 
+  const qrData = member?.gdgId
+    ? `https://gdgpup.org/sparkmates/${member.gdgId}`
+    : undefined;
+  const {
+    qrImageUrl,
+    isLoading: isQrLoading,
+    error: qrError,
+  } = useQrCode(qrData);
+
+  const shouldWaitForQr = Boolean(member?.gdgId) && !qrImageUrl && !qrError;
+  const isCardLoading = isLoading || isQrLoading || shouldWaitForQr;
+
   console.log("member", member);
 
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -73,12 +86,48 @@ const IDPage = () => {
     const canvas = canvasRef.current;
     if (!canvas || !member) return;
 
+    // Do not render a partial card while QR generation is still in progress.
+    if (shouldWaitForQr) {
+      setImageUrl(null);
+      return;
+    }
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const template = new window.Image();
-    template.src = "/cards/front_empty_skeleton_updated.svg"; // your base template image
-    template.onload = () => {
+    const renderCanvas = async () => {
+      // 1. Load template
+      const template = new window.Image();
+      const webpLoaded = await new Promise<boolean>((resolve) => {
+        template.onload = () => resolve(true);
+        template.onerror = () => resolve(false);
+        template.src = "/cards/front_card.webp";
+      });
+
+      if (!webpLoaded) {
+        const svgLoaded = await new Promise<boolean>((resolve) => {
+          template.onload = () => resolve(true);
+          template.onerror = () => resolve(false);
+          template.src = "/cards/front_card.svg";
+        });
+
+        if (!svgLoaded) {
+          throw new Error("Failed to load card template image");
+        }
+      }
+
+      // 2. Load QR code if available
+      let qrImg: HTMLImageElement | null = null;
+      if (qrImageUrl) {
+        qrImg = new window.Image();
+        qrImg.crossOrigin = "anonymous";
+        qrImg.src = qrImageUrl;
+        await new Promise((resolve) => {
+          qrImg!.onload = resolve;
+          qrImg!.onerror = resolve; // Continue even if QR fails
+        });
+      }
+
       // High-resolution multiplier for crisp downloads
       const downloadScale = 2;
 
@@ -94,6 +143,15 @@ const IDPage = () => {
         // Clear and draw template
         context.clearRect(0, 0, width, height);
         context.drawImage(template, 0, 0, width, height);
+
+        // Draw QR Image
+        if (qrImg && qrImg.complete && qrImg.naturalWidth > 0) {
+          const qrSize = 150;
+          const qrX = width / 2 - qrSize / 2;
+          const qrY = 300 - qrSize / 2;
+
+          context.drawImage(qrImg, qrX, qrY, qrSize, qrSize);
+        }
 
         // Enable high-quality rendering
         context.imageSmoothingEnabled = true;
@@ -236,7 +294,9 @@ const IDPage = () => {
         setImageUrl(canvas.toDataURL("image/png"));
       }
     };
-  }, [member]);
+
+    renderCanvas();
+  }, [member, qrImageUrl, shouldWaitForQr]);
 
   const handleDownloadPNG = () => {
     if (!canvasRef.current) return;
@@ -295,7 +355,7 @@ const IDPage = () => {
             <div className="w-[17rem] xs:w-sm sm:w-md xl:w-lg ">
               <CardImage
                 imageUrl={imageUrl}
-                isLoading={isLoading}
+                isLoading={isCardLoading}
                 isError={isError}
               />
             </div>

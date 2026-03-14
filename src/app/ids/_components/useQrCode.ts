@@ -18,6 +18,25 @@ const convertBlobToDataUrl = (blob: Blob): Promise<string> => {
   });
 };
 
+const toPngBlob = (rawData: Blob | ArrayBuffer | ArrayBufferView): Blob => {
+  if (rawData instanceof Blob) {
+    return rawData;
+  }
+
+  if (rawData instanceof ArrayBuffer) {
+    return new Blob([rawData], { type: "image/png" });
+  }
+
+  const view = new Uint8Array(
+    rawData.buffer,
+    rawData.byteOffset,
+    rawData.byteLength,
+  );
+  const copied = new Uint8Array(view.length);
+  copied.set(view);
+  return new Blob([copied.buffer], { type: "image/png" });
+};
+
 interface QrHookResult {
   qrImageUrl: string | null;
   isLoading: boolean;
@@ -98,10 +117,7 @@ export function useQrCode(data: string | undefined): QrHookResult {
             throw new Error("QR generation returned empty image data");
           }
 
-          const qrBlob =
-            rawPng instanceof Blob
-              ? rawPng
-              : new Blob([rawPng as any], { type: "image/png" });
+          const qrBlob = toPngBlob(rawPng);
           return convertBlobToDataUrl(qrBlob);
         };
 

@@ -93,14 +93,14 @@ export const CardImage = ({
                 )}
               >
                 <img
-                  src="/cards/front_empty_skeleton_updated.svg"
+                  src="/cards/front_card.svg"
                   alt="GDG ID Front Skeleton"
                   className="w-full h-auto opacity-0"
                 />
                 {true && (
                   <div className="w-full h-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <img
-                      src="/cards/front_empty_skeleton_updated.svg"
+                      src="/cards/front_card.svg"
                       alt="GDG ID Front Skeleton"
                       className={cn(
                         "w-full h-auto  ",
